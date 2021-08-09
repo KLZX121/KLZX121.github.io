@@ -32,7 +32,33 @@ const morseCode = {
 function newWord(){
     showInput.innerHTML = '';
 
-    const word = wordsMode.checked ? words[Math.floor(Math.random()*1000)] : randomMode.checked ? alphabet[Math.floor(Math.random() * 26)] : alphabet[alphabet.indexOf(showWord.innerHTML) === 25 ? 0 : alphabet.indexOf(showWord.innerHTML) + 1];
+    if ('.-'.includes(showWord.innerHTML[0])) showWord.innerHTML = morseToEng(showWord.innerHTML);
+
+    const mode = {
+        language: document.querySelector('input[name="language"]:checked').id,
+        type: document.querySelector('input[name="type"]:checked').id, 
+        mode: document.querySelector('input[name="mode"]:checked').id
+    }
+
+    switch(mode.type){
+        case 'wordsType':
+            if (randomMode.checked){
+                var word = words[Math.floor(Math.random() * words.length)];
+            } else {
+                var word = words[words.indexOf(showWord.innerHTML) === (words.length - 1) ? 0 : words.indexOf(showWord.innerHTML) + 1];
+            }
+            break;
+        case 'lettersType':
+            if (randomMode.checked){
+                var word = alphabet[Math.floor(Math.random() * alphabet.length)];
+            } else {
+                var word = alphabet[alphabet.indexOf(showWord.innerHTML) === 25 ? 0 : alphabet.indexOf(showWord.innerHTML) + 1];
+            }
+            break;
+        
+    };
+    if (mode.language === 'morseLanguage') word = engToMorse(word)
+    //const word = wordsMode.checked ? words[Math.floor(Math.random()*1000)] : randomMode.checked ? alphabet[Math.floor(Math.random() * 26)] : alphabet[alphabet.indexOf(showWord.innerHTML) === 25 ? 0 : alphabet.indexOf(showWord.innerHTML) + 1];
     showWord.innerHTML = '';
     showWord.innerHTML = word;
 
@@ -42,7 +68,7 @@ function newWord(){
                 newWord();
                 break;
             case 'Enter': //submit word
-                score.innerHTML += inputToMorse(showInput.innerHTML.trim(), word);
+                score.innerHTML += mode.language === 'morseLanguage' ? submit(word, showInput.innerHTML.trim()) : submit(showInput.innerHTML.trim(), word);
                 newWord();
                 break;
             case 'ShiftRight': //new letter
@@ -57,20 +83,26 @@ function newWord(){
             case 'Slash': //dash
                 showInput.innerHTML += '-';
                 break;
+            default:
+                if (mode.language === 'morseLanguage' && alphabet.includes(event.key)) {
+                    showInput.innerHTML += event.key;
+                }
         }
     };
-    function inputToMorse(inputMorse, wordEng){
-        //convert word to morse
-        let wordMorse = [];
-        const wordEngLetters = wordEng.split('');
-        wordEngLetters.forEach(letter => {
-            wordMorse.push(morseCode[letter]);
-        });
-        wordMorse = wordMorse.join(' ');
+    function submit(morse, eng){
+        let translateMorse = engToMorse(eng);
+        let translateEng = morseToEng(morse);
 
-        //compare input with word
-        const correct = (inputMorse === wordMorse);
+        const correct = morse === translateMorse;
 
+        lastWord.innerHTML = mode.language === 'morseLanguage' ? morse : eng;
+        lastWordMorse.innerHTML =  mode.language === 'morseLanguage' ? translateEng : translateMorse;
+        answerMorse.innerHTML =  mode.language === 'morseLanguage' ? eng :morse;
+        translation.innerHTML =  mode.language === 'morseLanguage' ? translateMorse : translateEng;
+
+        return correct ? '&#10004;' : '&#10005;';
+    }
+    function morseToEng(inputMorse){
         //convert input to english
         const inputMorseLetters = inputMorse.split(" ");
         let inputEng = [];
@@ -84,14 +116,16 @@ function newWord(){
             }
             if (len === inputEng.length) inputEng.push(`[${morseLetter}]`);
         });
-        inputEng = inputEng.join('');
-
-        lastWord.innerHTML = wordEng;
-        lastWordMorse.innerHTML = wordMorse;
-        answerMorse.innerHTML = inputMorse;
-        translation.innerHTML = inputEng;
-
-        return correct ? '&#10004;' : '&#10005;';
+        return inputEng.join('');
+    }
+    function engToMorse(wordEng){
+        //convert word to morse
+        let wordMorse = [];
+        const wordEngLetters = wordEng.split('');
+        wordEngLetters.forEach(letter => {
+            wordMorse.push(morseCode[letter]);
+        });
+        return wordMorse.join(' ');
     }
 };
 newWord();

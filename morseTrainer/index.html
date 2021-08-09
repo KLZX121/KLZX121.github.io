@@ -10,8 +10,8 @@
         }
         section {
             border-bottom: 2px solid lightgrey;
-            padding: 10px;
-            margin: 25px 100px;
+            padding: 10px 0;
+            margin: 0 100px;
         }
         .big {
             font-size: 2em;
@@ -64,26 +64,63 @@
 </head>
 <body>
     <section>
-        About: I made this for myself to improve my Morse code skills, hence why it is really roughly put together. It basically gives you a random word (or letter depending on the mode you have chosen) and you use the hotkeys listed to type it out in Morse. Words mode gives you a random word, Random mode gives you a random letter, and Iterate mode just goes through the alphabet. A Morse chart can be found <a href="./morse-chart.png" target="blank" style="color: skyblue;">here</a>.
+        <p>
+            About: I made this for myself to improve my Morse code skills, hence why it is really roughly put together. 
+            It basically gives you a random word (or letter depending on the mode you have chosen) and you use the hotkeys listed to type it out in Morse. 
+            A Morse chart can be found <a href="./morse-chart.png" target="blank" style="color: skyblue;">here</a>.
+        </p>
+        <p>
+            Languages:
+            <ul>
+                <li>English: Outputs the phrase in English</li>
+                <li>Morse: Outputs the phrase in Morse</li>
+            </ul>
+            Types:
+            <ul>
+                <li>Words: Outputs a word from a list of the 1000 most common English words (<a href="https://www.ef.sg/english-resources/english-vocabulary/top-1000-words/">Credits</a>)</li>
+                <li>Letters: A single letter from the English alphabet</li>
+            </ul>
+            Modes:
+            <ul>
+                <li>Random: Chooses from the selected list randomly</li>
+                <li>Iterate: Runs through the selected list one by one</li>
+            </ul>
+        </p>
     </section>
     <section>
-        <input id="wordsMode" type="radio" name="mode" checked>
-        <label for="wordsMode">Words</label>
-        <input id="randomMode" type="radio" name="mode">
-        <label for="randomMode">Random</label>
-        <input id="iterateMode" type="radio" name="mode">
-        <label for="iterateMode">Iterate</label>
+        <div>
+            <strong>Language:</strong>
+            <input id="englishLanguage" type="radio" name="language" checked>
+            <label for="englishLanguage">English</label>
+            <input id="morseLanguage" type="radio" name="language">
+            <label for="morseLanguage">Morse</label>
+        </div>
+        <div>
+            <strong>Type:</strong>
+            <input id="wordsType" type="radio" name="type" checked>
+            <label for="wordsType">Words</label>
+            <input id="lettersType" type="radio" name="type">
+            <label for="lettersType">Letters</label>
+        </div>
+        
+        <div>
+            <strong>Mode:</strong>
+            <input id="randomMode" type="radio" name="mode" checked>
+            <label for="randomMode">Random</label>
+            <input id="iterateMode" type="radio" name="mode">
+            <label for="iterateMode">Iterate</label>
+        </div>
     </section>
     <section id="score"><strong>Score: </strong></section>
     <section>
         <div><strong>Last word: </strong></div><br>
-        <div><span id="lastWord"></span><br><span id="lastWordMorse" class="big"></span></div>
+        <div><span id="lastWord" class="big"></span><br><span id="lastWordMorse" class="big"></span></div>
         <br>
         <div><strong>Your answer: </strong></div>
-        <div><span id="answerMorse" class="big"></span><br><span id="translation"></span></div>
+        <div><span id="answerMorse" class="big"></span><br><span id="translation" class="big"></span></div>
     </section>
-    <section><strong>Word: </strong><span id="showWord">a</span></section>
-    <section><strong>Input: </strong><span id="showInput" class="big"></span><span id="cursorDash" style="display: inline;" class="big">|</span></section>
+    <section><strong>Phrase: </strong><span id="showWord" class="big">a</span></section>
+    <section><strong>Translation: </strong><span id="showInput" class="big"></span><span id="cursorDash" style="display: inline;" class="big">|</span></section>
     <section>
         <strong>Hotkeys:</strong><br><br>
         <kbd>.</kbd> = dot ( . )<br><br>
