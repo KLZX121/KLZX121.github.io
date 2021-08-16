@@ -14,7 +14,7 @@
             margin: 0 100px;
         }
         .big {
-            font-size: 2em;
+            font-size: 1.5em;
         }
         /**
         * KEYS.css
@@ -79,6 +79,7 @@
             <ul>
                 <li>Words: Outputs a word from a list of the 1000 most common English words (<a href="https://www.ef.sg/english-resources/english-vocabulary/top-1000-words/">Credits</a>)</li>
                 <li>Letters: A single letter from the English alphabet</li>
+                <li>Numbers: A number from 0 - 9 if iterating or a number from 0 - 999999 if random</li>
             </ul>
             Modes:
             <ul>
@@ -101,6 +102,8 @@
             <label for="wordsType">Words</label>
             <input id="lettersType" type="radio" name="type">
             <label for="lettersType">Letters</label>
+            <input id="numbersType" type="radio" name="type">
+            <label for="numbersType">Numbers</label>
         </div>
         
         <div>
@@ -123,8 +126,8 @@
     <section><strong>Translation: </strong><span id="showInput" class="big"></span><span id="cursorDash" style="display: inline;" class="big">|</span></section>
     <section>
         <strong>Hotkeys:</strong><br><br>
-        <kbd>.</kbd> = dot ( . )<br><br>
-        <kbd>/</kbd> = dash ( - )<br><br>
+        <kbd>.</kbd> = dot ( · )<br><br>
+        <kbd>/</kbd> = dash ( − )<br><br>
         <kbd>RShift</kbd> = space<br><br>
         <kbd>Enter</kbd> = submit<br><br>
         <kbd>Space</kbd> = skip word<br><br>
