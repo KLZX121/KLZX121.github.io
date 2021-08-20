@@ -39,6 +39,7 @@ const morseCode = {
     '8': '−−−··',
     '9': '−−−−·'
 };
+const dashTime = 200;
 
 function newWord(){
     showInput.innerHTML = '';
@@ -85,14 +86,34 @@ function newWord(){
     showWord.innerHTML = '';
     showWord.innerHTML = word;
 
+
+    let spacePressed = false;
+
     document.onkeydown = event => {
         switch (event.code){
-            case 'Space': //skip word
+            case 'KeyS': //skip word
                 newWord();
                 break;
             case 'Enter': //submit word
                 score.innerHTML += mode.language === 'morseLanguage' ? submit(word, showInput.innerHTML.trim()) : submit(showInput.innerHTML.trim(), word);
                 newWord();
+                break;
+            case 'Space': //dots or dashes
+                if (spacePressed) return;
+                spacePressed = true;
+
+                showInput.innerHTML += '·';
+
+                const id = setTimeout(() => {
+                    showInput.innerHTML = showInput.innerHTML.slice(0, -1);
+                    showInput.innerHTML += '−';
+                }, dashTime);
+
+                document.addEventListener('keyup', event => {
+                    spacePressed = false;
+                    clearTimeout(id);
+                }, { once: true });
+                
                 break;
             case 'ShiftRight': //space
                 showInput.innerHTML += ' ';
