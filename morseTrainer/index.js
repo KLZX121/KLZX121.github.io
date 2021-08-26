@@ -39,7 +39,9 @@ const morseCode = {
     '8': '−−−··',
     '9': '−−−−·'
 };
-const dashTime = 200;
+const dashTime = 300;
+const doAutoSpace = true;
+const autoSpaceInt = 500;
 
 function newWord(){
     showInput.innerHTML = '';
@@ -88,8 +90,10 @@ function newWord(){
 
 
     let spacePressed = false;
+    let spaceId;
 
     document.onkeydown = event => {
+        clearTimeout(spaceId);
         switch (event.code){
             case 'ControlLeft': //skip word
                 newWord();
@@ -104,14 +108,20 @@ function newWord(){
 
                 showInput.innerHTML += '·';
 
-                const id = setTimeout(() => {
+                const dashId = setTimeout(() => {
                     showInput.innerHTML = showInput.innerHTML.slice(0, -1);
                     showInput.innerHTML += '−';
                 }, dashTime);
+                
 
                 document.addEventListener('keyup', event => {
                     spacePressed = false;
-                    clearTimeout(id);
+                    clearTimeout(dashId);
+
+                    if (!doAutoSpace) return;
+                    spaceId = setTimeout(() => {
+                        showInput.innerHTML += ' ';
+                    }, autoSpaceInt)
                 }, { once: true });
                 
                 break;
@@ -121,16 +131,11 @@ function newWord(){
             case 'Backspace': //delete last char
                 showInput.innerHTML = showInput.innerHTML.slice(0, -1);
                 break;
-            case 'Period': //dot
-                showInput.innerHTML += '·';
-                break;
-            case 'Slash': //dash
-                showInput.innerHTML += '−';
-                break;
             default:
                 if (mode.language === 'morseLanguage' && /[a-z0-9]+/i.test(event.key)) {
                     showInput.innerHTML += event.key;
                 }
+                break;
         }
     };
     function submit(morse, eng){
