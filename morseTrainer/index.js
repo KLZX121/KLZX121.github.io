@@ -91,7 +91,7 @@ function newWord(){
 
     document.onkeydown = event => {
         switch (event.code){
-            case 'KeyS': //skip word
+            case 'ControlLeft': //skip word
                 newWord();
                 break;
             case 'Enter': //submit word
