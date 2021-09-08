@@ -1,13 +1,68 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <style>
+            * {
+                color: white;
+            }
+            body {
+                text-align: center;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                font-family: sans-serif;
+                align-content: center;
+                background: url("background-image.png"); 
+                background-size: cover;
+            }
+            a {
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            li {
+                list-style: inside none;
+            }
+            ul {
+                padding-left: 0;
+            }
+            .card-container {
+                text-align: center;
+                display: flex;
+                flex-wrap: wrap;
+                margin-bottom: 10em;
+            }
+            .card {
+                width: 200px;
+                border-radius: 10px;
+                padding: 2em;
+                background-color: rgba(255, 255, 255, 0.2);
+                margin: 30px;
 
+                backdrop-filter: blur(5px);
+            }
+            .intro {
+                margin-bottom: 10%;
+            }
+        </style>
     </head>
     <body>
-        <h1>KLZX121's Website</h1>
-        <p>
-            This website is mainly for my own use so I have spent 0 effort in making anything look remotely good.
-        </p>
+        <h1 class="intro">KLZX121's website</h1>
+        <div class="card-container">
+            <div class="card">
+                <h1>Discord</h1>
+                KLZX121#9414
+            </div>
+            <a href="https://github.com/KLZX121"><div class="card">
+                <h1>GitHub</h1>
+                @KLZX121
+            </div></a>
+            <a href="https://www.youtube.com/channel/UCeO4aQUp_scJOAEKtecgnXg"><div class="card">
+                <h1>YouTube</h1>
+                @KLZX121
+            </div></a>
+        </div>
         <h3>Links</h3>
         <ul>
             <li><a href="./morseTrainer/index.html">Morse Code Trainer</a></li>
