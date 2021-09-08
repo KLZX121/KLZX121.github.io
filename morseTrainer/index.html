@@ -16,6 +16,9 @@
         .big {
             font-size: 1.5em;
         }
+        .prewhitespace {
+            white-space: pre;
+        }
         /**
         * KEYS.css
         *
@@ -123,11 +126,11 @@
         <div><span id="answerMorse" class="big"></span><br><span id="translation" class="big"></span></div>
     </section>
     <section><strong>Phrase: </strong><span id="showWord" class="big">a</span></section>
-    <section><strong>Translation: </strong><span id="showInput" class="big"></span><span id="cursorDash" style="display: inline;" class="big">|</span></section>
+    <section><strong>Translation: </strong><span id="showInput" class="big prewhitespace"></span><span id="cursorDash" style="display: inline;" class="big">|</span></section>
     <section>
         <strong>Hotkeys:</strong><br><br>
         <kbd>Space</kbd> = short press ( dot · ) / long press ( dash − )<br><br>
-        <kbd>RShift</kbd> = space<br><br>
+        <kbd>, (Comma)</kbd> = space<br><br>
         <kbd>Enter</kbd> = submit<br><br>
         <kbd>LControl</kbd> = skip word<br><br>
         <kbd>Backspace</kbd> = delete last character<br><br>

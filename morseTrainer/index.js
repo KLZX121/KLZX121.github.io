@@ -125,7 +125,7 @@ function newWord(){
                 }, { once: true });
                 
                 break;
-            case 'ShiftRight': //space
+            case 'Comma': //space
                 showInput.innerHTML += ' ';
                 break;
             case 'Backspace': //delete last char
@@ -181,4 +181,4 @@ newWord();
 
 setInterval(() => {
     cursorDash.style.display = cursorDash.style.display === 'none' ? 'inline' : 'none';
-}, 500);
+}, 200);
