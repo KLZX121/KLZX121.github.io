@@ -132,7 +132,7 @@ function newWord(){
                 showInput.innerHTML = showInput.innerHTML.slice(0, -1);
                 break;
             default:
-                if (mode.language === 'morseLanguage' && /[a-z0-9]+/i.test(event.key)) {
+                if (mode.language === 'morseLanguage' && /^[a-z0-9]$/i.test(event.key)) {
                     showInput.innerHTML += event.key;
                 }
                 break;
