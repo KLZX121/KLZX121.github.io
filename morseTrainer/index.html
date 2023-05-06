@@ -1,82 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        * {
-            font-family: sans-serif;
-        }
-        body {
-            border: 2px solid grey;
-        }
-        section {
-            border-bottom: 2px solid lightgrey;
-            padding: 10px 0;
-            margin: 0 100px;
-        }
-        .big {
-            font-size: 1.5em;
-        }
-        .prewhitespace {
-            white-space: pre;
-        }
-        /**
-        * KEYS.css
-        *
-        * A simple stylesheet for rendering beautiful keyboard-style elements.
-        *
-        * Author:  Michael Hüneburg
-        * Website: http://michaelhue.com/keyscss
-        * License: MIT License (see LICENSE.txt)
-        */
-
-        /* Base style, essential for every key. */
-        kbd, .key {
-            display: inline;
-            display: inline-block;
-            min-width: 1em;
-            padding: .2em .3em;
-            font: normal .85em/1 monospace;
-            text-align: center;
-            text-decoration: none;
-            -moz-border-radius: .3em;
-            -webkit-border-radius: .3em;
-            border-radius: .3em;
-            border: none;
-            cursor: default;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-        kbd[title], .key[title] {
-            cursor: help;
-        }
-
-        /* Dark style for display on light background. This is the default style. */
-        kbd, kbd.dark, .dark-keys kbd, .key, .key.dark, .dark-keys .key {
-            background: rgb(80, 80, 80);
-            background: -moz-linear-gradient(top, rgb(60, 60, 60), rgb(80, 80, 80));
-            background: -webkit-gradient(linear, left top, left bottom, from(rgb(60, 60, 60)), to(rgb(80, 80, 80)));
-            color: rgb(250, 250, 250);
-            text-shadow: -1px -1px 0 rgb(70, 70, 70);
-            -moz-box-shadow: inset 0 0 1px rgb(150, 150, 150), inset 0 -.05em .4em rgb(80, 80, 80), 0 .1em 0 rgb(30, 30, 30), 0 .1em .1em rgba(0, 0, 0, .3);
-            -webkit-box-shadow: inset 0 0 1px rgb(150, 150, 150), inset 0 -.05em .4em rgb(80, 80, 80), 0 .1em 0 rgb(30, 30, 30), 0 .1em .1em rgba(0, 0, 0, .3);
-            box-shadow: inset 0 0 1px rgb(150, 150, 150), inset 0 -.05em .4em rgb(80, 80, 80), 0 .1em 0 rgb(30, 30, 30), 0 .1em .1em rgba(0, 0, 0, .3);
-        }
-
-    </style>
+    <link rel="stylesheet" href="./index.css" />
 </head>
 <body>
-    <section>
+    <section id="infoSection">
         <p>
             About: I made this for myself to improve my Morse code skills, hence why it is really roughly put together. 
-            It basically gives you a random word (or letter depending on the mode you have chosen) and you use the hotkeys listed to type it out in Morse. 
+            It basically gives you a random word (or letter/number depending on the mode you have chosen) and you translate it in Morse, or vice versa. 
             A Morse chart can be found <a href="./morse-chart.png" target="blank" style="color: skyblue;">here</a>.
         </p>
         <p>
+            <strong>Settings</strong><br><br>
             Languages:
             <ul>
-                <li>English: Outputs the phrase in English</li>
-                <li>Morse: Outputs the phrase in Morse</li>
+                <li>English: English Output - Translate to Morse</li>
+                <li>Morse: Morse Output - Translate to English</li>
             </ul>
             Types:
             <ul>
@@ -90,8 +29,14 @@
                 <li>Iterate: Runs through the selected list one by one</li>
             </ul>
         </p>
+        <strong>Hotkeys:</strong><br><br>
+        <kbd>Space</kbd> = short press ( dot · ) / long press ( dash − )<br><br>
+        <kbd>, (Comma)</kbd> = space<br><br>
+        <kbd>Enter</kbd> = submit<br><br>
+        <kbd>LControl</kbd> = skip word<br><br>
+        <kbd>Backspace</kbd> = delete last character<br><br>
     </section>
-    <section>
+    <section id="settingsSection">
         <div>
             <strong>Language:</strong>
             <input id="englishLanguage" type="radio" name="language" checked>
@@ -118,7 +63,7 @@
         </div>
     </section>
     <section id="score"><strong>Score: </strong></section>
-    <section>
+    <section id="lastAnswerSection">
         <div><strong>Last word: </strong></div><br>
         <div><span id="lastWord" class="big"></span><br><span id="lastWordMorse" class="big"></span></div>
         <br>
@@ -127,14 +72,6 @@
     </section>
     <section><strong>Phrase: </strong><span id="showWord" class="big">a</span></section>
     <section><strong>Translation: </strong><span id="showInput" class="big prewhitespace"></span><span id="cursorDash" style="display: inline;" class="big">|</span></section>
-    <section>
-        <strong>Hotkeys:</strong><br><br>
-        <kbd>Space</kbd> = short press ( dot · ) / long press ( dash − )<br><br>
-        <kbd>, (Comma)</kbd> = space<br><br>
-        <kbd>Enter</kbd> = submit<br><br>
-        <kbd>LControl</kbd> = skip word<br><br>
-        <kbd>Backspace</kbd> = delete last character<br><br>
-    </section>
     
     <script src="./index.js"></script>
 </body>
