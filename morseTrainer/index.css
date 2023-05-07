@@ -22,9 +22,16 @@ section {
 #inputBox {
     height: 1.5em;
     width: 100%;
+    position: relative;
 }
 #showInput {
     color: dodgerblue;
+}
+#inputPlaceholder {
+    font-weight: bold;
+    color: lightgrey;
+    position: absolute;
+    top: 5px;
 }
 #cursorDash {
     height: 10px;

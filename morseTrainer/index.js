@@ -164,6 +164,7 @@ function newWord(){
                 }
                 break;
         }
+        inputPlaceholder.style.display = showInput.innerText.length ? 'none' : 'inline';
     };
     function submit(morse, eng){
         let translateMorse = engToMorse(eng);
@@ -172,9 +173,9 @@ function newWord(){
         const correct = morse === translateMorse;
 
         lastWord.innerHTML = mode.language === 'morseLanguage' ? morse : eng;
-        lastWordMorse.innerHTML =  mode.language === 'morseLanguage' ? translateEng : translateMorse;
+        lastWordMorse.innerHTML =  `> ${mode.language === 'morseLanguage' ? translateEng : translateMorse}`;
         answerMorse.innerHTML =  mode.language === 'morseLanguage' ? eng : morse;
-        translation.innerHTML =  mode.language === 'morseLanguage' ? translateMorse : translateEng;
+        translation.innerHTML =  `> ${mode.language === 'morseLanguage' ? translateMorse : translateEng}`;
 
         return correct;
     }
