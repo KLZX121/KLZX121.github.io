@@ -16,9 +16,15 @@ section {
 .prewhitespace {
     white-space: pre;
 }
+.bold {
+    font-weight: bold;
+}
 #inputBox {
     height: 1.5em;
     width: 100%;
+}
+#showInput {
+    color: dodgerblue;
 }
 #cursorDash {
     height: 10px;

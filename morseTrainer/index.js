@@ -110,7 +110,19 @@ function newWord(){
                 newWord();
                 break;
             case 'Enter': //submit word
-                score.innerHTML += mode.language === 'morseLanguage' ? submit(word, showInput.innerHTML.trim()) : submit(showInput.innerHTML.trim(), word);
+                let isCorrect = mode.language === 'morseLanguage' ? submit(word, showInput.innerHTML.trim()) : submit(showInput.innerHTML.trim(), word);
+                let parseScore = score.innerText.split('/');
+
+                parseScore[1] = parseInt(parseScore[1]) + 1;
+                if (isCorrect){
+                    parseScore[0] = parseInt(parseScore[0]) + 1;
+                    answerDisplay.style.color = 'green';
+                } else {
+                    answerDisplay.style.color = 'red';
+                }
+
+                score.innerText = parseScore.join('/');
+
                 newWord();
                 break;
             case 'Space': //dots or dashes
@@ -161,10 +173,10 @@ function newWord(){
 
         lastWord.innerHTML = mode.language === 'morseLanguage' ? morse : eng;
         lastWordMorse.innerHTML =  mode.language === 'morseLanguage' ? translateEng : translateMorse;
-        answerMorse.innerHTML =  mode.language === 'morseLanguage' ? eng :morse;
+        answerMorse.innerHTML =  mode.language === 'morseLanguage' ? eng : morse;
         translation.innerHTML =  mode.language === 'morseLanguage' ? translateMorse : translateEng;
 
-        return correct ? '&#10004;' : '&#10005;';
+        return correct;
     }
     function morseToEng(inputMorse){
         //convert input to english

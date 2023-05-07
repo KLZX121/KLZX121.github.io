@@ -34,14 +34,23 @@
 
     <section id="lastAnswerSection">
         <div><strong>Last word: </strong></div><br>
-        <div><span id="lastWord" class="big"></span><br><span id="lastWordMorse" class="big"></span></div>
+        <div class="bold">
+            <span id="lastWord" class="big"></span>
+            <br>
+            <span id="lastWordMorse" class="big"></span>
+        </div>
         <br>
         <div><strong>Your answer: </strong></div>
-        <div><span id="answerMorse" class="big"></span><br><span id="translation" class="big"></span></div>
+        <div id="answerDisplay" class="bold">
+            <span id="answerMorse" class="big"></span>
+            <br>
+            <span id="translation" class="big"></span>
+        </div>
     </section>
 
-    <section id="score">
+    <section id="scoreSection">
         <strong>Score: </strong>
+        <span id="score">0/0</span>
     </section>
 
     <section>
@@ -52,7 +61,7 @@
     <section>
         <strong>Translation: </strong>
         <div id="inputBox">
-            <span id="showInput" class="big prewhitespace"></span>
+            <span id="showInput" class="big prewhitespace bold"></span>
             <span id="cursorDash" style="display: inline;" class="big"></span>
         </div>
     </section>
