@@ -22,13 +22,26 @@
             <input id="numbersType" type="radio" name="type">
             <label for="numbersType">Numbers</label>
         </div>
-        
         <div>
             <strong>Mode:</strong>
             <input id="randomMode" type="radio" name="mode" checked>
             <label for="randomMode">Random</label>
             <input id="iterateMode" type="radio" name="mode">
             <label for="iterateMode">Iterate</label>
+        </div>
+        <div>
+            <strong>Auto Space:</strong>
+            <input id="doAutoSpace" type="checkbox" checked>
+        </div>
+        <div>
+            <strong>Auto Space Delay:</strong>
+            <input id="autoSpaceInt" type="number" value="500">
+            <span>ms</span>
+        </div>
+        <div>
+            <strong>Auto Dash Delay:</strong>
+            <input id="autoDash" type="number" value="300">
+            <span>ms</span>
         </div>
     </section>
 
@@ -91,6 +104,11 @@
                 <li>Random: Chooses from the selected list randomly</li>
                 <li>Iterate: Runs through the selected list one by one</li>
             </ul>
+            Auto Space: Automatically add a space after each word in your Morse input
+            <br>
+            Auto Space Delay: The delay after your last input before a space is added
+            <br>
+            Auto Dash Delay: The length of time you need to hold the space key to input a dash
         </p>
         <strong>Hotkeys:</strong><br><br>
         <kbd>Space</kbd> = short press ( dot · ) / long press ( dash − )<br><br>

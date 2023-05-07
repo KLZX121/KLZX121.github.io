@@ -39,9 +39,6 @@ const morseCode = {
     '8': '−−−··',
     '9': '−−−−·'
 };
-const dashTime = 300;
-const doAutoSpace = true;
-const autoSpaceInt = 500;
 
 toggleInfo.onclick = () => {
     if (infoSection.style.display == 'block'){
@@ -137,18 +134,18 @@ function newWord(){
                 const dashId = setTimeout(() => {
                     showInput.innerHTML = showInput.innerHTML.slice(0, -1);
                     showInput.innerHTML += '−';
-                }, dashTime);
+                }, autoDash.value);
                 
 
                 document.addEventListener('keyup', event => {
                     spacePressed = false;
                     clearTimeout(dashId);
 
-                    if (!doAutoSpace) return;
+                    if (!doAutoSpace.checked) return;
                     //add automatic space after autoSpaceInt ms
                     spaceId = setTimeout(() => {
                         showInput.innerHTML += ' ';
-                    }, autoSpaceInt)
+                    }, autoSpaceInt.value)
                 }, { once: true });
                 
                 break;
