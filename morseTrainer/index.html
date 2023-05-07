@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="./index.css" />
 </head>
 <body>
-    <button id="toggleInfo">Show Info</button>
     <section id="settingsSection">
         <div>
             <strong>Language:</strong>
@@ -46,7 +45,7 @@
     </section>
 
     <section id="lastAnswerSection">
-        <div><strong>Last word: </strong></div><br>
+        <div><strong>Previous word: </strong></div><br>
         <div class="bold">
             <span id="lastWord" class="big"></span>
             <br>
@@ -79,7 +78,22 @@
             <span id="cursorDash" style="display: inline;" class="big"></span>
         </div>
     </section>
+
+    <section>
+        <strong>Instructions:</strong>
+        <p>
+            Tap or hold the space key to input dots or dashes respectively when translating English to Morse, or type out the English letters when translating Morse to English.
+            <br>
+            Translate the word in the <strong>Phrase</strong> section.
+            <br>
+            See the previous word and correct translation, along with your answer and translation, in the <strong>Previous word</strong> and <strong>Your answer</strong> section.
+            <br>
+            View your total score in the <strong>Score</strong> section.
+        </p>
+    </section>
     
+    <button id="toggleInfo">Show Info</button>
+
     <section id="infoSection" style="display: none;">
         <p>
             About: I made this website for myself to practice Morse, so it is more focused on functionality than anything. 
