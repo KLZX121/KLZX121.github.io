@@ -91,6 +91,7 @@ function newWord(){
             break;
         
     };
+    word = word.toLowerCase();
     if (mode.language === 'morseLanguage') word = engToMorse(word)
     
     showWord.innerHTML = '';
