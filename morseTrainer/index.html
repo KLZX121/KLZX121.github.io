@@ -4,9 +4,62 @@
     <link rel="stylesheet" href="./index.css" />
 </head>
 <body>
-    <section id="infoSection">
+    <button id="toggleInfo">Show Info</button>
+    <section id="settingsSection">
+        <div>
+            <strong>Language:</strong>
+            <input id="englishLanguage" type="radio" name="language" checked>
+            <label for="englishLanguage">English</label>
+            <input id="morseLanguage" type="radio" name="language">
+            <label for="morseLanguage">Morse</label>
+        </div>
+        <div>
+            <strong>Type:</strong>
+            <input id="wordsType" type="radio" name="type" checked>
+            <label for="wordsType">Words</label>
+            <input id="lettersType" type="radio" name="type">
+            <label for="lettersType">Letters</label>
+            <input id="numbersType" type="radio" name="type">
+            <label for="numbersType">Numbers</label>
+        </div>
+        
+        <div>
+            <strong>Mode:</strong>
+            <input id="randomMode" type="radio" name="mode" checked>
+            <label for="randomMode">Random</label>
+            <input id="iterateMode" type="radio" name="mode">
+            <label for="iterateMode">Iterate</label>
+        </div>
+    </section>
+
+    <section id="lastAnswerSection">
+        <div><strong>Last word: </strong></div><br>
+        <div><span id="lastWord" class="big"></span><br><span id="lastWordMorse" class="big"></span></div>
+        <br>
+        <div><strong>Your answer: </strong></div>
+        <div><span id="answerMorse" class="big"></span><br><span id="translation" class="big"></span></div>
+    </section>
+
+    <section id="score">
+        <strong>Score: </strong>
+    </section>
+
+    <section>
+        <strong>Phrase: </strong>
+        <span id="showWord" class="big">a</span>
+    </section>
+
+    <section>
+        <strong>Translation: </strong>
+        <div id="inputBox">
+            <span id="showInput" class="big prewhitespace"></span>
+            <span id="cursorDash" style="display: inline;" class="big"></span>
+        </div>
+    </section>
+    
+    <section id="infoSection" style="display: none;">
         <p>
-            About: I made this for myself to improve my Morse code skills, hence why it is really roughly put together. 
+            About: I made this website for myself to practice Morse, so it is more focused on functionality than anything. 
             It basically gives you a random word (or letter/number depending on the mode you have chosen) and you translate it in Morse, or vice versa. 
             A Morse chart can be found <a href="./morse-chart.png" target="blank" style="color: skyblue;">here</a>.
         </p>
@@ -36,43 +89,7 @@
         <kbd>LControl</kbd> = skip word<br><br>
         <kbd>Backspace</kbd> = delete last character<br><br>
     </section>
-    <section id="settingsSection">
-        <div>
-            <strong>Language:</strong>
-            <input id="englishLanguage" type="radio" name="language" checked>
-            <label for="englishLanguage">English</label>
-            <input id="morseLanguage" type="radio" name="language">
-            <label for="morseLanguage">Morse</label>
-        </div>
-        <div>
-            <strong>Type:</strong>
-            <input id="wordsType" type="radio" name="type" checked>
-            <label for="wordsType">Words</label>
-            <input id="lettersType" type="radio" name="type">
-            <label for="lettersType">Letters</label>
-            <input id="numbersType" type="radio" name="type">
-            <label for="numbersType">Numbers</label>
-        </div>
-        
-        <div>
-            <strong>Mode:</strong>
-            <input id="randomMode" type="radio" name="mode" checked>
-            <label for="randomMode">Random</label>
-            <input id="iterateMode" type="radio" name="mode">
-            <label for="iterateMode">Iterate</label>
-        </div>
-    </section>
-    <section id="score"><strong>Score: </strong></section>
-    <section id="lastAnswerSection">
-        <div><strong>Last word: </strong></div><br>
-        <div><span id="lastWord" class="big"></span><br><span id="lastWordMorse" class="big"></span></div>
-        <br>
-        <div><strong>Your answer: </strong></div>
-        <div><span id="answerMorse" class="big"></span><br><span id="translation" class="big"></span></div>
-    </section>
-    <section><strong>Phrase: </strong><span id="showWord" class="big">a</span></section>
-    <section><strong>Translation: </strong><span id="showInput" class="big prewhitespace"></span><span id="cursorDash" style="display: inline;" class="big">|</span></section>
-    
+
     <script src="./index.js"></script>
 </body>
 </html>

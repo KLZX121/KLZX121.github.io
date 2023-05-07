@@ -1,12 +1,13 @@
 * {
-    font-family: sans-serif;
+    font-family: 'calibri light';
+    font-size: 1.04em;
 }
 body {
-    border: 2px solid grey;
+    border-top: 2px solid grey;
 }
 section {
     border-bottom: 2px solid lightgrey;
-    padding: 10px 0;
+    padding: 10px;
     margin: 0 100px;
 }
 .big {
@@ -15,6 +16,40 @@ section {
 .prewhitespace {
     white-space: pre;
 }
+#inputBox {
+    height: 1.5em;
+    width: 100%;
+}
+#cursorDash {
+    height: 10px;
+    position: relative;
+}
+#cursorDash::after {
+    content: '';
+    position: absolute;
+    border-left: 1px solid black;
+    top: 0.3em;
+    height: 0.8em;
+}
+#showWord {
+    font-weight: bold;
+    color: black;
+}
+#toggleInfo {
+    display: block;
+    position: absolute;
+    margin: 10px 10px;
+    width: 80px;
+
+    outline: none;
+    color: black;
+    background: lightgrey;
+    border: 1px solid darkgrey;
+}
+#toggleInfo:hover {
+    color: rgb(100, 100, 100);
+}
+
 /**
 * KEYS.css
 *
